@@ -3,8 +3,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [info.sunng/ring-jetty9-adapter "0.3.0"]
                  [prismatic/schema "0.2.0"]
-                 [metosin/compojure-api "0.0.1"]
-                 [metosin/ring.swagger-ui "0.0.1"]]
+                 [metosin/compojure-api "0.0.1"]]
   :main compojure.api.examples.server
   :profiles {:uberjar {:aot :all
                        :resource-paths ["swagger-ui"]}

@@ -3,5 +3,4 @@
             [compojure.api.examples.handler :refer [app]])
   (:gen-class))
 
-(defn -main [& _] (run-jetty app {:port 3000}))
-
+(defn -main [& args] (run-jetty #'app {:port 3000 :join? false}))
