@@ -1,10 +1,19 @@
-# compojure-api-examples
+# Compojure-api-examples
 
-A Clojure library designed to ... well, that part is up to you.
+Example for using Compojure-api.
 
 ## Usage
 
-FIXME
+### Running
+
+```lein run```
+
+### Packaging
+
+```lein do clean, uberjar```
+
+### Running Packaged
+```java -jar target/compojure-api-examples-0.0.1-standalone.jar```
 
 ## License
 
