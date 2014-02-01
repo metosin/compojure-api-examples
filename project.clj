@@ -5,10 +5,10 @@
             :distribution :repo
             :comments "same as Clojure"}
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [info.sunng/ring-jetty9-adapter "0.3.0"]
-                 [metosin/compojure-api "0.0.1"]]
-  :main compojure.api.main
-  :start compojure.api.examples.server/start
-  :profiles {:uberjar {:aot [compojure.api.main]
+                 [metosin/compojure-api "0.0.1"]
+                 [metosin/ring-swagger-ui "2.0.4"]]
+  :ring {:handler compojure.api.examples.handler/app}
+  :profiles {:uberjar {:aot [compojure.api.examples.handler.main]
                        :resource-paths ["swagger-ui"]}
-             :dev {:dependencies [[javax.servlet/servlet-api "2.5"]]}})
+             :dev {:plugins [[lein-clojars "0.9.1"]
+                             [lein-ring "0.8.7"]]}})
