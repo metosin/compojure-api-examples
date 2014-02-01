@@ -1,16 +1,16 @@
 # Compojure-api-examples
 
-Example for using Compojure-api.
+Example project for using Compojure-api.
 
 ## Usage
 
 ### Running
 
-```lein run```
+```lein ring server```
 
 ### Packaging
 
-```lein do clean, uberjar```
+```lein do clean, ring uberjar```
 
 ### Running Packaged
 ```java -jar target/compojure-api-examples-0.0.1-standalone.jar```
