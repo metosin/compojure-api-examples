@@ -1,6 +1,6 @@
 # Compojure-api-examples
 
-Example project for using Compojure-api.
+Example project for using [Compojure-api](https://github.com/metosin/compojure-api).
 
 ## Usage
 
