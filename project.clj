@@ -8,7 +8,5 @@
                  [metosin/compojure-api "0.0.1"]
                  [metosin/ring-swagger-ui "2.0.4"]]
   :ring {:handler compojure.api.examples.handler/app}
-  :profiles {:uberjar {:aot [compojure.api.examples.handler.main]
-                       :resource-paths ["swagger-ui"]}
-             :dev {:plugins [[lein-clojars "0.9.1"]
-                             [lein-ring "0.8.7"]]}})
+  :profiles {:uberjar {:resource-paths ["swagger-ui"]}
+             :dev {:plugins [[lein-ring "0.8.10"]]}})
