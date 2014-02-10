@@ -1,5 +1,6 @@
 (ns compojure.api.examples.handler
   (:require [compojure.api.sweet :refer :all]
+            [ring.util.http-response :refer :all]
             [compojure.api.examples.domain :refer :all]))
 
 (defapi app
