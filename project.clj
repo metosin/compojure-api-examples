@@ -7,7 +7,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [metosin/compojure-api "0.3.0"]
                  [metosin/ring-http-response "0.2.0"]
-                 [metosin/ring-swagger-ui "2.0.4-1"]]
+                 [metosin/ring-swagger-ui "2.0.7"]]
   :ring {:handler compojure.api.examples.handler/app}
   :profiles {:uberjar {:resource-paths ["swagger-ui"]}
              :dev {:dependencies [[javax.servlet/servlet-api "2.5"]]
