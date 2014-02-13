@@ -5,11 +5,15 @@
 
 (defapi app
   (swagger-ui)
-  (swagger-docs "/api/docs"
-    :title "Cool api"
-    :description "Compojure Sample Web Api")
-  (swaggered "sample"
-    :description "sample api"
+  (swagger-docs
+    :title "Sample Api"
+    :description "Compojure Api sample application"
+    :contact "pizza@example.com"
+    :termsOfServiceUrl "https://github.com/metosin/compojure-api"
+    :license "Eclipse 1.0"
+    :licenseUrl "http://www.eclipse.org/legal/epl-v10.html")
+  (swaggered "pizza"
+    :description "Pizza Api it is."
     (context "/api" []
       (GET* "/pizzas" []
         :return   [Pizza]
