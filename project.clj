@@ -5,7 +5,7 @@
             :distribution :repo
             :comments "same as Clojure"}
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [metosin/compojure-api "0.2.0"]
+                 [metosin/compojure-api "0.3.0"]
                  [metosin/ring-http-response "0.2.0"]
                  [metosin/ring-swagger-ui "2.0.4-1"]]
   :ring {:handler compojure.api.examples.handler/app}
