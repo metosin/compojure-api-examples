@@ -7,11 +7,7 @@
   (swagger-ui)
   (swagger-docs
     :title "Sample Api"
-    :description "Compojure Api sample application"
-    :contact "pizza@example.com"
-    :termsOfServiceUrl "https://github.com/metosin/compojure-api"
-    :license "Eclipse 1.0"
-    :licenseUrl "http://www.eclipse.org/legal/epl-v10.html")
+    :description "Compojure Api sample application")
   (swaggered "pizza"
     :description "Pizza Api it is."
     (context "/api" []
