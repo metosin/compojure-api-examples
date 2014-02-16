@@ -1,11 +1,11 @@
-(defproject metosin/compojure-api-examples "0.2.0"
+(defproject metosin/compojure-api-examples "0.2.1"
   :description "Compojure-api-examples"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo
             :comments "same as Clojure"}
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [metosin/compojure-api "0.4.0"]
+                 [metosin/compojure-api "0.4.1"]
                  [metosin/ring-http-response "0.3.0"]
                  [metosin/ring-swagger-ui "2.0.7"]]
   :ring {:handler compojure.api.examples.handler/app}
