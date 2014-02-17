@@ -13,7 +13,7 @@ Example project for using [Compojure-api](https://github.com/metosin/compojure-a
 ```lein do clean, ring uberjar```
 
 ### Running Packaged
-```java -jar target/compojure-api-examples-0.2.1-standalone.jar```
+```java -jar target/compojure-api-examples-0.5.0-standalone.jar```
 
 ## License
 
