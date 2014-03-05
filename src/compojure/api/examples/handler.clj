@@ -11,7 +11,7 @@
   (swaggered "pizza"
     :description "Pizza Api it is."
     (context "/api" []
-      (GET* "/pizzas"
+      (GET* "/pizzas" []
         :return   [Pizza]
         :summary  "Gets all Pizzas"
         (ok (get-pizzas)))
@@ -19,12 +19,12 @@
         :return   Pizza
         :summary  "Gets a pizza"
         (ok (get-pizza (->Long id))))
-      (POST* "/pizzas"
+      (POST* "/pizzas" []
         :return   Pizza
         :body     [pizza NewPizza {:description "new pizza"}]
         :summary  "Adds a pizza"
         (ok (add! pizza)))
-      (PUT* "/pizzas"
+      (PUT* "/pizzas" []
         :return   Pizza
         :body     [pizza Pizza]
         :summary  "Updates a pizza"
