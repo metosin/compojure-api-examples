@@ -4,14 +4,18 @@
 
 ;; Domain
 
+(def Topping (s/enum :cheese :olives :ham :pepperoni :habanero))
+
 (defmodel Pizza {:id    Long
                  :name  String
                  :price Double
                  :hot   Boolean
                  (s/optional-key :description) String
-                 :toppings #{(s/enum :cheese :olives :ham :pepperoni :habanero)}})
+                 :toppings #{Topping}})
 
 (defmodel NewPizza (dissoc Pizza :id))
+
+(defmodel NewSingleToppingPizza (assoc NewPizza :toppings Topping))
 
 ;; Repository
 

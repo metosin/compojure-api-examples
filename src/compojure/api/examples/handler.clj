@@ -8,6 +8,20 @@
   (swagger-docs
     :title "Sample Api"
     :description "Compojure Api sample application")
+  (swaggered "echo"
+    :description "request echoes"
+    (context "/echo" []
+      (GET* "/request" req (ok (dissoc req :body)))
+      (GET* "/pizza" []
+        :return   NewSingleToppingPizza
+        :query    [pizza NewSingleToppingPizza]
+        :summary  "get echo of a pizza"
+        (ok pizza))
+      (POST* "/pizza" []
+        :return   NewSingleToppingPizza
+        :body     [pizza NewSingleToppingPizza]
+        :summary  "post echo of a pizza"
+        (ok pizza))))
   (swaggered "pizza"
     :description "Pizza Api it is."
     (context "/api" []
