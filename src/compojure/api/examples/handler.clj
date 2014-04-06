@@ -8,6 +8,16 @@
   (swagger-docs
     :title "Sample Api"
     :description "Compojure Api sample application")
+  (swaggered "math"
+    :description "math with query & path params"
+    (GET* "/sum" []
+      :query-params [x :- Long y :- Long]
+      :summary      "sums x & y query-parameters"
+      (ok {:total (+ x y)}))
+    (GET* "/times/:x/:y" []
+      :path-params [x :- Long y :- Long]
+      :summary     "multiplies x & y path-parameters"
+      (ok {:total (* x y)})))
   (swaggered "echo"
     :description "request echoes"
     (context "/echo" []
