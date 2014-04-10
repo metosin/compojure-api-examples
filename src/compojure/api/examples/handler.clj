@@ -9,11 +9,19 @@
     :title "Sample Api"
     :description "Compojure Api sample application")
   (swaggered "math"
-    :description "math with query & path params"
-    (GET* "/sum" []
+    :description "math with parameters"
+    (GET* "/plus" []
       :query-params [x :- Long y :- Long]
-      :summary      "sums x & y query-parameters"
+      :summary      "x+y with query-parameters"
       (ok {:total (+ x y)}))
+    (POST* "/minus" []
+      :body-params [x :- Long y :- Long]
+      :summary      "x-y with body-parameters"
+      (ok {:total (- x y)}))
+    (GET* "/times/:x/:y" []
+      :path-params [x :- Long y :- Long]
+      :summary      "x*y with path-parameters"
+      (ok {:total (* x y)}))
     (GET* "/times/:x/:y" []
       :path-params [x :- Long y :- Long]
       :summary     "multiplies x & y path-parameters"
