@@ -16,15 +16,11 @@
       (ok {:total (+ x y)}))
     (POST* "/minus" []
       :body-params [x :- Long y :- Long]
-      :summary      "x-y with body-parameters"
+      :summary     "x-y with body-parameters"
       (ok {:total (- x y)}))
     (GET* "/times/:x/:y" []
       :path-params [x :- Long y :- Long]
-      :summary      "x*y with path-parameters"
-      (ok {:total (* x y)}))
-    (GET* "/times/:x/:y" []
-      :path-params [x :- Long y :- Long]
-      :summary     "multiplies x & y path-parameters"
+      :summary     "x*y with path-parameters"
       (ok {:total (* x y)})))
   (swaggered "echo"
     :description "request echoes"
