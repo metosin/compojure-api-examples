@@ -38,26 +38,27 @@
         (ok pizza))))
   (swaggered "pizza"
     :description "Pizza Api it is."
-    (context "/api" []
-      (GET* "/pizzas" []
-        :return   [Pizza]
-        :summary  "Gets all Pizzas"
+    (context "/api/pizzas" []
+      (GET* "/" []
+        :return  [Pizza]
+        :summary "Gets all Pizzas"
         (ok (get-pizzas)))
-      (GET* "/pizzas/:id" [id]
-        :return   Pizza
-        :summary  "Gets a pizza"
-        (ok (get-pizza (->Long id))))
-      (POST* "/pizzas" []
-        :return   Pizza
-        :body     [pizza NewPizza {:description "new pizza"}]
-        :summary  "Adds a pizza"
+      (POST* "/" []
+        :return  Pizza
+        :body    [pizza NewPizza {:description "new pizza"}]
+        :summary "Adds a pizza"
         (ok (add! pizza)))
-      (PUT* "/pizzas" []
-        :return   Pizza
-        :body     [pizza Pizza]
-        :summary  "Updates a pizza"
+      (PUT* "/" []
+        :return  Pizza
+        :body    [pizza Pizza]
+        :summary "Updates a pizza"
         (ok (update! pizza)))
-      (DELETE* "/pizzas/:id" [id]
-        :return   Pizza
+      (GET* "/:id" []
+        :return      Pizza
+        :path-params [id :- Long]
+        :summary     "Gets a pizza"
+        (ok (get-pizza id)))
+      (DELETE* "/:id" []
+        :path-params [id :- Long]
         :summary  "Deletes a Pizza"
-        (ok (delete! (->Long id)))))))
+        (ok (delete! id))))))

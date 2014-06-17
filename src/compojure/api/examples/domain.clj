@@ -1,21 +1,21 @@
 (ns compojure.api.examples.domain
   (:require [schema.core :as s]
-            [ring.swagger.schema :refer :all]))
+            [ring.swagger.schema :refer [coerce!]]))
 
 ;; Domain
 
 (def Topping (s/enum :cheese :olives :ham :pepperoni :habanero))
 
-(defmodel Pizza {:id    Long
-                 :name  String
-                 :price Double
-                 :hot   Boolean
-                 (s/optional-key :description) String
-                 :toppings #{Topping}})
+(s/defschema Pizza {:id    Long
+                    :name  String
+                    :price Double
+                    :hot   Boolean
+                    (s/optional-key :description) String
+                    :toppings #{Topping}})
 
-(defmodel NewPizza (dissoc Pizza :id))
+(s/defschema NewPizza (dissoc Pizza :id))
 
-(defmodel NewSingleToppingPizza (assoc NewPizza :toppings Topping))
+(s/defschema NewSingleToppingPizza (assoc NewPizza :toppings Topping))
 
 ;; Repository
 
