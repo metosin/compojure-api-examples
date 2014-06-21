@@ -1,13 +1,15 @@
 (ns compojure.api.examples.handler
   (:require [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
-            [compojure.api.examples.domain :refer :all]))
+            [compojure.api.examples.domain :refer :all]
+            [schema.core :as s]))
 
 (defapi app
   (swagger-ui)
   (swagger-docs
     :title "Sample Api"
     :description "Compojure Api sample application")
+
   (swaggered "math"
     :description "math with parameters"
     (GET* "/plus" []
@@ -22,6 +24,7 @@
       :path-params [x :- Long y :- Long]
       :summary     "x*y with path-parameters"
       (ok {:total (* x y)})))
+
   (swaggered "echo"
     :description "request echoes"
     (context "/echo" []
@@ -31,11 +34,16 @@
         :query    [pizza NewSingleToppingPizza]
         :summary  "get echo of a pizza"
         (ok pizza))
+      (PUT* "/anonymous" []
+        :return [{:secret Boolean s/Keyword s/Any}]
+        :body   [body [{:secret Boolean s/Keyword s/Any}]]
+        (ok body))
       (POST* "/pizza" []
         :return   NewSingleToppingPizza
         :body     [pizza NewSingleToppingPizza]
         :summary  "post echo of a pizza"
         (ok pizza))))
+
   (swaggered "pizza"
     :description "Pizza Api it is."
     (context "/api/pizzas" []
