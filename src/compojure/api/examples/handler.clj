@@ -38,6 +38,10 @@
         :return [{:secret Boolean s/Keyword s/Any}]
         :body   [body [{:secret Boolean s/Keyword s/Any}]]
         (ok body))
+      (GET* "/hello" []
+        :return String
+        :query-params [name :- String]
+        (ok (str "Hello, " name)))
       (POST* "/pizza" []
         :return   NewSingleToppingPizza
         :body     [pizza NewSingleToppingPizza]
