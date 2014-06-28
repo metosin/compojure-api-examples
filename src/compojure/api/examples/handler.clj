@@ -4,6 +4,8 @@
             [compojure.api.examples.domain :refer :all]
             [schema.core :as s]))
 
+(s/defschema Total {:total Long})
+
 (defapi app
   (swagger-ui)
   (swagger-docs
@@ -13,17 +15,25 @@
   (swaggered "math"
     :description "math with parameters"
     (GET* "/plus" []
+      :return Total
       :query-params [x :- Long y :- Long]
-      :summary      "x+y with query-parameters"
+      :summary "x+y with query-parameters"
       (ok {:total (+ x y)}))
     (POST* "/minus" []
+      :return Total
       :body-params [x :- Long y :- Long]
-      :summary     "x-y with body-parameters"
+      :summary "x-y with body-parameters"
       (ok {:total (- x y)}))
     (GET* "/times/:x/:y" []
+      :return Total
       :path-params [x :- Long y :- Long]
-      :summary     "x*y with path-parameters"
-      (ok {:total (* x y)})))
+      :summary "x*y with path-parameters"
+      (ok {:total (* x y)}))
+   (GET* "/power" []
+      :return Total
+      :header-params [x :- Long y :- Long]
+      :summary "x^y with header-parameters"
+      (ok {:total (long (Math/pow x y))})))
 
   (swaggered "echo"
     :description "request echoes"
