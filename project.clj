@@ -4,7 +4,7 @@
                  [metosin/ring-swagger "0.18.1"]
                  [metosin/compojure-api "0.18.0-SNAPSHOT"]
                  [metosin/ring-http-response "0.6.0"]
-                 [metosin/ring-swagger-ui "2.0.24"]
+                 [metosin/ring-swagger-ui "2.1.8-M1"]
                  [clj-time "0.9.0"]]
   :ring {:handler compojure.api.examples.handler/app}
   :uberjar-name "examples.jar"
