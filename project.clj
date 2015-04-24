@@ -1,8 +1,8 @@
-(defproject metosin/compojure-api-examples "0.19.0"
+(defproject metosin/compojure-api-examples "0.20.0"
   :description "Compojure-api-examples"
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [metosin/ring-swagger "0.19.3"]
-                 [metosin/compojure-api "0.19.2"]
+                 [metosin/ring-swagger "0.20.0"]
+                 [metosin/compojure-api "0.20.0"]
                  [metosin/ring-http-response "0.6.1"]
                  [metosin/ring-swagger-ui "2.1.0-M2-2"]
                  [clj-time "0.9.0"]]
