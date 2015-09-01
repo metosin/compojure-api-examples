@@ -1,8 +1,8 @@
-(defproject metosin/compojure-api-examples "0.21.0"
+(defproject metosin/compojure-api-examples "0.23.0"
   :description "Compojure-api-examples"
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [clj-time "0.9.0"] ;; needed as `lein ring` is broken.
-                 [metosin/compojure-api "0.22.0"]]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [clj-time "0.11.0"] ;; needed as `lein ring uberwar` is broken.
+                 [metosin/compojure-api "0.23.0"]]
   :ring {:handler compojure.api.examples.handler/app}
   :uberjar-name "examples.jar"
   :uberwar-name "examples.war"
