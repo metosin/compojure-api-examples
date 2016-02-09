@@ -4,6 +4,8 @@
 
 ;; Domain
 
+(s/defschema Total {:total Long})
+
 (def Topping (s/enum :cheese :olives :ham :pepperoni :habanero))
 
 (s/defschema Pizza {:id    Long

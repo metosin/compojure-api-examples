@@ -4,88 +4,96 @@
             [compojure.api.examples.domain :refer :all]
             [schema.core :as s]))
 
-(s/defschema Total {:total Long})
-
 (defapi app
-  (swagger-ui)
-  (swagger-docs
-    {:info {:title "Sample Api"
-            :description "Compojure Api sample application"}
-     :tags [{:name "math", :description "math with parameters"}
-            {:name "echo", :description "request echoes"}
-            {:name "pizza", :description "pizza Api it is."}]})
+  {:swagger
+   {:info {:title "Sample Api"
+           :description "Compojure Api sample application"}
+    :tags [{:name "math", :description "math with parameters"}
+           {:name "echo", :description "request echoes"}
+           {:name "pizza", :description "pizza Api it is."}]}}
 
-  (context* "/math" []
+  (context "/math" []
     :tags ["math"]
 
-    (GET* "/plus" []
+    (GET "/plus" []
       :return Total
       :query-params [x :- Long, y :- Long]
       :summary "x+y with query-parameters"
       (ok {:total (+ x y)}))
-    (POST* "/minus" []
+
+    (POST "/minus" []
       :return Total
       :body-params [x :- Long, y :- Long]
       :summary "x-y with body-parameters"
       (ok {:total (- x y)}))
-    (GET* "/times/:x/:y" []
+
+    (GET "/times/:x/:y" []
       :return Total
       :path-params [x :- Long, y :- Long]
       :summary "x*y with path-parameters"
       (ok {:total (* x y)}))
-    (GET* "/power" []
+
+    (GET "/power" []
       :return Total
       :header-params [x :- Long, y :- Long]
       :summary "x^y with header-parameters"
       (ok {:total (long (Math/pow x y))})))
 
-  (context* "/echo" []
+  (context "/echo" []
     :tags ["echo"]
 
-    (GET* "/request" req
+    (GET "/request" req
       (ok (dissoc req :body)))
-    (GET* "/pizza" []
+
+    (GET "/pizza" []
       :return NewSingleToppingPizza
       :query [pizza NewSingleToppingPizza]
       :summary "get echo of a pizza"
       (ok pizza))
-    (PUT* "/anonymous" []
+
+    (PUT "/anonymous" []
       :return [{:secret Boolean s/Keyword s/Any}]
       :body [body [{:secret Boolean s/Keyword s/Any}]]
       (ok body))
-    (GET* "/hello" []
+
+    (GET "/hello" []
       :return String
       :query-params [name :- String]
       (ok (str "Hello, " name)))
-    (POST* "/pizza" []
+
+    (POST "/pizza" []
       :return NewSingleToppingPizza
       :body [pizza NewSingleToppingPizza]
       :summary "post echo of a pizza"
       (ok pizza)))
 
-  (context* "/pizzas" []
+  (context "/pizzas" []
     :tags ["pizza"]
 
-    (GET* "/" []
+    (GET "/" []
       :return [Pizza]
       :summary "Gets all Pizzas"
       (ok (get-pizzas)))
-    (POST* "/" []
+
+    (POST "/" []
       :return Pizza
       :body [pizza NewPizza {:description "new pizza"}]
       :summary "Adds a pizza"
       (ok (add! pizza)))
-    (PUT* "/" []
+
+    (PUT "/" []
       :return Pizza
       :body [pizza Pizza]
       :summary "Updates a pizza"
       (ok (update! pizza)))
-    (GET* "/:id" []
+
+    (GET "/:id" []
       :return Pizza
       :path-params [id :- Long]
       :summary "Gets a pizza"
       (ok (get-pizza id)))
-    (DELETE* "/:id" []
+
+    (DELETE "/:id" []
       :path-params [id :- Long]
       :summary "Deletes a Pizza"
       (ok (delete! id)))))
